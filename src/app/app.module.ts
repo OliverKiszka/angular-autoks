@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { ListaWydatkowComponent } from './lista-wydatkow/lista-wydatkow.component';
 import { WydatkiService } from './wydatki.service';
 import { DodajWydatekComponent } from './dodaj-wydatek/dodaj-wydatek.component';
+import { StatystykaComponent } from './statystyka/statystyka.component';
 
 
 const appRoutes: Routes = [
   { path: 'wydatki', component: ListaWydatkowComponent },
   { path: 'dodaj', component: DodajWydatekComponent },
+  { path: 'statystyka', component: StatystykaComponent },
   { path: '',
     redirectTo: '/wydatki',
     pathMatch: 'full'
@@ -19,7 +21,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes) ],
-  declarations: [ AppComponent, ListaWydatkowComponent, DodajWydatekComponent ],
+  declarations: [ AppComponent, ListaWydatkowComponent, DodajWydatekComponent, StatystykaComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ WydatkiService ]
 })
