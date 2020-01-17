@@ -1,21 +1,23 @@
+<!-- <label class="switch"><input type="checkbox" ng-checked="onWydatki(1)"><span class="slider"></span></label> -->
+<button class="btn btn-danger" (click)="onWydatki(0)">Pełne statystyki</button>
+<button class="btn btn-success" (click)="onWydatki(1)">Ten miesiac</button>
+
 <table class="table">
     <tr>
-        <th>Suma wszystkich wydatków</th>
-        <th>Suma wydatków: Tankowanie</th>
-        <th>Suma wydatków: Myjnia</th>
-        <th>Suma wydatków: Serwis</th>
-        <th>Suma wydatków: Inne</th>
-        <th>Suma wydatków: Wydatki</th>
+        <th>Kategoria</th>
+        <th>Kwota</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><label class="switch"><input type="checkbox"><span class="slider"></span>
-      </label></td>
+    <tr *ngFor="let kategoria of kategorie">
+      <td>{{kategoria}}</td>
+      <td>{{lacznaKwota(kategoria)| number:'1.2-2'}} zł</td>
+      
     </tr>
+    
 </table>
+
+<h3>Suma wszystkich wydatków: {{lacznaKwotaRaw}}</h3>

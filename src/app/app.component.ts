@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Wydatek, KATEGORIE } from "./wydatek";
 
 @Component({
   selector: 'my-app',
