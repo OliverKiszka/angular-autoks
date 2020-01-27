@@ -29,6 +29,7 @@ export class WydatkiService {
     };
     wydatkiList.items.push(wydatek);
     this.storage.set(STORAGE_KEY, wydatkiList);
+    console.log(this.storage);
   }
 
   public removeFromStore(id: number): void {
@@ -41,6 +42,7 @@ export class WydatkiService {
   }
 
   reset() {
+    this.storage.set(STORAGE_KEY, null);
     this.nextId = 7;
     this.wydatki = [
       new Wydatek(1, "Tankowanie", 252.43, "", new Date(2018, 4, 30), 20, 262),
