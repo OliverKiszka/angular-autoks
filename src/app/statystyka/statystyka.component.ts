@@ -1,24 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { Wydatek, KATEGORIE } from "../wydatek";
 import { WydatkiService } from "../wydatki.service";
 
 @Component({
-  selector: 'app-statystyka',
-  templateUrl: './statystyka.component.html',
-  styleUrls: ['./statystyka.component.css']
+  selector: "app-statystyka",
+  templateUrl: "./statystyka.component.html",
+  styleUrls: ["./statystyka.component.css"]
 })
-// export class StatystykaComponent implements OnInit {
-//   wydatki: Wydatek[];
-//   kategorie: string[];
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 export class StatystykaComponent implements OnInit {
-  
   wydatki: Wydatek[];
   kategorie: string[];
   private stat: number = 0;
@@ -27,7 +16,6 @@ export class StatystykaComponent implements OnInit {
   constructor(private wydatkiService: WydatkiService) {}
 
   ngOnInit() {
-    
     this.kategorie = KATEGORIE;
     this.wydatki = this.wydatkiService.getWydatki();
     this.lacznaKwotaRawPriv = this.wydatki.reduce(
@@ -49,7 +37,10 @@ export class StatystykaComponent implements OnInit {
 
     const wydatki = this.wydatki
       .filter(wyd => {
-        return wyd.data.getMonth() === month && wyd.data.getFullYear() === year;
+        return (
+          new Date(wyd.data).getMonth() === month &&
+          new Date(wyd.data).getFullYear() === year
+        );
       })
       .reduce((acc, val) => (acc += val.kwota), 0);
     this.lacznaKwotaRawPriv = wydatki;
@@ -76,7 +67,8 @@ export class StatystykaComponent implements OnInit {
         .filter(wyd => wyd.kategoria === kategoria)
         .filter(wyd => {
           return (
-            wyd.data.getMonth() === month && wyd.data.getFullYear() === year
+            new Date(wyd.data).getMonth() === month &&
+            new Date(wyd.data).getFullYear() === year
           );
         })
         .reduce((acc, val) => (acc += val.kwota), 0);
